@@ -1,6 +1,6 @@
 # Proyek Akhir Pemrograman Berbasis Objek 1
 
-Proyek ini adalah contoh sederhana aplikasi manajemen studio foto "Payung Teduh Studio" menggunakan Java sebagai tugas akhir dari mata kuliah pemrograman berbasis objek 1.
+Proyek ini adalah contoh aplikasi manajemen data studio foto "Payung Teduh Studio" menggunakan Java sebagai tugas akhir dari mata kuliah pemrograman berbasis objek 1.
 
 ## Deskripsi
 
@@ -40,23 +40,16 @@ public class MainPayungTeduh {
 }
 ```
 
-2. **Object** adalah instance dari class. Pada kode ini, `new PaketIndoor("Minimalist Potrait", 350000)`, `new PaketIndoor("Corporate Professional", 500000)`, `new PaketIndoor("Graduation Story", 600000)`, `new PaketOutdoor("Family Warmth", 1350000, 150000)`, `new PaketOutdoor("Eternal Love (Pre-Wedding)", 5000000, 200000)`, `static Scanner sc = new Scanner(System.in);`, `Pelanggan pelangganBaru = new Pelanggan(nama, noHp, email);`, `PemesananFoto pesananBaru = new PemesananFoto(pelangganBaru, paketTerpilih, tanggal);` adalah contoh pembuatan object.
+2. **Object** adalah instance dari class. Pada kode ini, `new PaketIndoor("Minimalist Potrait", 350000)`, `new PaketIndoor("Corporate Professional", 500000)`, `new PaketIndoor("Graduation Story", 600000)`, `new PaketOutdoor("Family Warmth", 1350000, 150000)`, `new PaketOutdoor("Eternal Love (Pre-Wedding)", 5000000, 200000)`, `Pelanggan pelangganBaru = new Pelanggan(nama, noHp, email);`, `PemesananFoto pesananBaru = new PemesananFoto(pelangganBaru, paketTerpilih, tanggal);` adalah contoh pembuatan object.
 
 ```bash
 new PaketIndoor("Minimalist Potrait", 350000)
-
 new PaketIndoor("Corporate Professional", 500000)
-
 new PaketIndoor("Graduation Story", 600000)
-
 new PaketOutdoor("Family Warmth", 1350000, 150000)
-
 new PaketOutdoor("Eternal Love (Pre-Wedding)", 5000000, 200000)
 
-static Scanner sc = new Scanner(System.in);
-
 Pelanggan pelangganBaru = new Pelanggan(nama, noHp, email);
-
 PemesananFoto pesananBaru = new PemesananFoto(pelangganBaru, paketTerpilih, tanggal);
 ```
 
@@ -213,6 +206,13 @@ public abstract class PaketLayanan {
     public abstract double hitungTotal();
 }
 
+//pada class PaketIndoor
+@Override
+public double hitungTotal() {
+    ...
+}
+
+//pada class PaketOutdoor
 @Override
 public double hitungTotal() {
     ...
@@ -223,22 +223,22 @@ public double hitungTotal() {
 
 ```bash
 switch (pilihan) {
-                case 1:
-                    lihatPaket();
-                    break;
-                case 2:
-                    pesanSesi();
-                    break;
-                case 3:
-                    tampilkanRiwayat();
-                    break;
-                case 4:
-                    lanjut = false;
-                    System.out.println("\nTerima kasih telah menggunakan layanan Studio Payung Teduh!");
-                    System.out.println("Sampai jumpa di sesi pemotretan berikutnya :)");
-                    break;
-                default:
-                    System.out.println(">> Menu tidak tersedia. Silakan pilih 1-4.\n");
+    case 1:
+        lihatPaket();
+        break;
+    case 2:
+        pesanSesi();
+        break;
+    case 3:
+        tampilkanRiwayat();
+        break;
+    case 4:
+        lanjut = false;
+        System.out.println("\nTerima kasih telah menggunakan layanan Studio Payung Teduh!");
+        System.out.println("Sampai jumpa di sesi pemotretan berikutnya :)");
+        break;
+    default:
+        System.out.println(">> Menu tidak tersedia. Silakan pilih 1-4.\n");
 }
 ```
 
@@ -246,38 +246,28 @@ switch (pilihan) {
 
 ```bash
 while (lanjut) {
-            tampilkanMenu();
+    ...
+}
 
-            int pilihan = -1;
-            //ERROR HANDLING
-            try {
-                System.out.print("Pilih menu (1-4): ");
-                String input = sc.nextLine();
-                pilihan = Integer.parseInt(input);
-            } catch (NumberFormatException e) {
-                System.out.println(">> Input harus berupa angka!\n");
-                continue;
-            }
-
-            //SELEKSI
-            switch (pilihan) {
-                case 1:
-                    lihatPaket();
-                    break;
-                case 2:
-                    pesanSesi();
-                    break;
-                case 3:
-                    tampilkanRiwayat();
-                    break;
-                case 4:
-                    lanjut = false;
-                    System.out.println("\nTerima kasih telah menggunakan layanan Studio Payung Teduh!");
-                    System.out.println("Sampai jumpa di sesi pemotretan berikutnya :)");
-                    break;
-                default:
-                    System.out.println(">> Menu tidak tersedia. Silakan pilih 1-4.\n");
-            }
+//SELEKSI
+switch (pilihan) {
+    case 1:
+        lihatPaket();
+        break;
+    case 2:
+        pesanSesi();
+        break;
+    case 3:
+        tampilkanRiwayat();
+        break;
+    case 4:
+        lanjut = false;
+        System.out.println("\nTerima kasih telah menggunakan layanan Studio Payung Teduh!");
+        System.out.println("Sampai jumpa di sesi pemotretan berikutnya :)");
+        break;
+    default:
+        System.out.println(">> Menu tidak tersedia. Silakan pilih 1-4.\n");
+    }
 }
 ```
 
@@ -285,8 +275,13 @@ while (lanjut) {
 
 ```bash
 import java.util.Scanner;
-
 static Scanner sc = new Scanner(System.in);
+
+System.out.print("Nama Pelanggan  : ");
+String nama = sc.nextLine();
+
+System.out.println("Nama Pelanggan   : " + pelanggan.getNama());
+System.out.println("Total Biaya      : Rp" + paketDipilih.hitungTotal());;
 ```
 
 13. **Array** adalah struktur data yang digunakan untuk menyimpan beberapa nilai dalam satu variabel. Pada kode ini, `static PemesananFoto[] antrean = new PemesananFoto[20];` dan `antrean[jumlahAntrean] = pesananBaru;` adalah contoh penggunaan array.
